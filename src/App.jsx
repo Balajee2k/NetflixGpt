@@ -1,16 +1,17 @@
-import { useState } from 'react'
-import Header from './components/Header'
-import Login from './components/Login'
-import SignUp from './components/SignUp'
-import Body from './components/Body'
+import { useState } from 'react';
+import Header from './components/Header';
+import Login from './components/Login';
+import Body from './components/Body';
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore';
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <Provider store={appStore}>
       <Body />
- 
-    </>
+
+    </Provider>
   )
 }
 
