@@ -10,6 +10,8 @@ import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import Header from "./Header";
+import { AVATAR_URL } from "../utils/constant";
+
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   //useRef can be used to access DOM elements directly, but in this case, we are not using it.
@@ -34,7 +36,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPnb_I_OQt7Mcts15Kf9qwVchNCE7SJlkfYQ&s"
+            photoURL: AVATAR_URL,
           })
             .then(() => {
               //profile updated successfully
@@ -44,7 +46,7 @@ const Login = () => {
                   uid: uid,
                   email: email,
                   displayName: displayName,
-                  photoURL: photoURL,
+                  photoURL: AVATAR_URL,
                 })
               );
             }).catch((error) => {

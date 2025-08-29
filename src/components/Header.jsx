@@ -55,7 +55,7 @@ const Header = () => {
 
       <div className='flex  items-center space-x-4'>
         <h2>🔍</h2>
-        <img className='w-10 h-10 rounded-full' src={user?.photoURL || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPnb_I_OQt7Mcts15Kf9qwVchNCE7SJlkfYQ&s"} alt="User Avatar" />
+        <img className='w-10 h-10 rounded-full' src={user?.photoURL || AVATAR_URL} alt="User Avatar" />
         <h2>User: {user?.displayName || "User"}</h2>
         <button onClick={handleSignOut} className='bg-red-600 px-4 py-2 rounded'>Sign Out</button>
       </div>
