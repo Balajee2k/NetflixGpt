@@ -1,4 +1,4 @@
-import { LOGO_URL } from "../utils/constant";
+
 import { BACKGROUND_IMAGE_URL } from "../utils/constant";
 import { useState } from "react";
 import { useRef } from "react";
@@ -6,13 +6,11 @@ import { Checkvalidate } from "../utils/validate";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-
+import Header from "./Header";
 const Login = () => {
-  const navigate = useNavigate();
   const [isSignIn, setIsSignIn] = useState(true);
   //useRef can be used to access DOM elements directly, but in this case, we are not using it.
   const name = useRef(null);
@@ -35,25 +33,24 @@ const Login = () => {
           // Signed up 
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name.current.value, 
+            displayName: name.current.value,
             photoURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPnb_I_OQt7Mcts15Kf9qwVchNCE7SJlkfYQ&s"
           })
-          .then(() => {
-            //profile updated successfully
-            const { uid, email,displayName,photoURL } = auth.currentUser;
-            dispatch(
-              addUser({
-                uid: uid,
-                email: email,
-                displayName: displayName,
-                photoURL: photoURL,
-              })
-            );
-            navigate('/browse');
-          }).catch((error) => {
-            // An error occurred
-            setError(error.message);
-          });
+            .then(() => {
+              //profile updated successfully
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+            }).catch((error) => {
+              // An error occurred
+              setError(error.message);
+            });
           console.log("User signed up successfully:", user);
 
         })
@@ -70,8 +67,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          console.log("User signed in successfully:", user);
-          navigate('/browse');
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -89,12 +84,10 @@ const Login = () => {
   return (
 
     <div>
-      <header className='absolute px-8 py-2 bg-gradient-to-b from-black z-10 '>
-        <img className='w-44' src={LOGO_URL} alt="Logo" />
-      </header>
 
+      <Header />
       <div className="absolute">
-        <img src={BACKGROUND_IMAGE_URL} alt="Background" />
+        <img src={BACKGROUND_IMAGE_URL} alt="logo" />
       </div>
 
       <form onSubmit={(e) => { e.preventDefault() }} className='w-3/12 absolute p-12 bg-black/80 my-36 mx-auto right-0 left-0 text-white rounded-lg'>
