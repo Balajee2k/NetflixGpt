@@ -48,15 +48,14 @@ const Header = () => {
   }, []);
 
   return (
-    <div className='absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between'>
-      <img className='w-44' src={LOGO_URL} alt="Logo" />
+    <div className='absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between'>
+      <img className='w-44 mx-auto md:mx-0' src={LOGO_URL} alt="Logo" />
 
     {user && (
 
       <div className='flex  items-center space-x-4'>
-        <h2>🔍</h2>
         <img className='w-10 h-10 rounded-full' src={user?.photoURL || AVATAR_URL} alt="User Avatar" />
-        <h2>User: {user?.displayName || "User"}</h2>
+        <h2 className='text-white'> {user?.displayName || "User"}</h2>
         <button onClick={handleSignOut} className='bg-red-600 px-4 py-2 rounded'>Sign Out</button>
       </div>
     )}
