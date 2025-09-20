@@ -4,12 +4,11 @@ export const BACKGROUND_IMAGE_URL = 'https://assets.nflxext.com/ffe/siteui/vlv3/
 
 export const AVATAR_URL='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPnb_I_OQt7Mcts15Kf9qwVchNCE7SJlkfYQ&s';
 
-
 export const API_OPTIONS = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZDgyM2E2OGVlNzgwZjJkNjBkNDU0YmY3Njg2ZDhjMiIsIm5iZiI6MTc1NjUwMDE3MS4xNTgwMDAyLCJzdWIiOiI2OGIyMTBjYmMzMWM4NzNjODM5ZTEzOTYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.GW24Ruaf3nqNtEPZGNQRDwFl_X5a0OyAbAAoojQgMXI'
+    Authorization: "Bearer " + import.meta.env.VITE_TMDB_API_KEY,
   }
 };
 
@@ -20,3 +19,5 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "hindi", name: "Hindi" },
   { identifier: "spanish", name: "Spanish" },
 ];
+
+export const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY; // THIS IS A OPENROUTER.AI KEYS
