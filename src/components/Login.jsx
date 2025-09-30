@@ -1,4 +1,3 @@
-
 import { BACKGROUND_IMAGE_URL } from "../utils/constant";
 import { useState } from "react";
 import { useRef } from "react";
@@ -89,10 +88,10 @@ const Login = () => {
 
       <Header />
       <div className="absolute">
-        <img className="" src={BACKGROUND_IMAGE_URL} alt="logo" />
+        <img className="w-screen h-screen object-cover" src={BACKGROUND_IMAGE_URL} alt="logo" />
       </div>
 
-      <form onSubmit={(e) => { e.preventDefault() }} className='w-full md:w-3/12 absolute p-12 bg-black/80 my-36 mx-auto right-0 left-0 text-white rounded-lg'>
+      <form onSubmit={(e) => { e.preventDefault() }} className='w-11/12 sm:w-8/12 md:w-6/12 lg:w-4/12 xl:w-3/12 absolute p-8 md:p-12 bg-black/80 my-20 sm:my-24 md:my-36 mx-auto right-0 left-0 text-white rounded-lg'>
 
         <h1 className='text-3xl font-bold py-4'>{isSignIn ? "Sign In" : "Sign Up"}</h1>
         {!isSignIn && <input ref={name} type='text' placeholder='Name' className='border p-4 my-4 rounded w-full bg-gray-700' />
